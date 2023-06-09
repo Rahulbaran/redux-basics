@@ -1,0 +1,146 @@
+html {
+  font-size: 75%;
+
+  @media screen and (width > 480px) {
+    font-size: 87.5%;
+  }
+  @media screen and (width > 768px) {
+    font-size: 100%;
+  }
+  @media screen and (width > 992px) {
+    font-size: 112.5%;
+  }
+  @media screen and (width > 1279px) {
+    font-size: 125%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  &,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+:root {
+  --base-fs: 1rem;
+  --base-padding: 0.5em;
+  --base-margin: 0.5em;
+  --base-br: 20px;
+  --base-lh: 1.5;
+  --base-gap: 0.5em;
+
+  // Colors
+  --heading-color: oklch(20% 0.25 150);
+}
+
+html,
+body {
+  block-size: 100%;
+}
+
+body {
+  font-size: var(--base-fs);
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: var(--base-lh);
+  background-color: oklch(95% 0.05 150);
+}
+
+// Typography
+:where(h1, h2, h3, h4, h5, h6) {
+  color: var(--heading-color);
+
+  &:not(h5, h6) {
+    line-height: calc(var(--base-lh) * 0.7);
+  }
+}
+
+:where(a, p, span, label) {
+  font-size: calc(var(--base-fs) * 1.1);
+}
+
+a,
+span {
+  display: inline-block;
+}
+
+iframe,
+video,
+img {
+  display: block;
+}
+
+.app-wrapper {
+  display: grid;
+  justify-items: center;
+  gap: calc(var(--base-gap) * 4);
+  padding-block: calc(var(--base-padding) * 2);
+
+  h1 {
+    font-size: calc(var(--base-fs) * 2.5);
+  }
+}
+
+// Todo Form
+.form-container {
+  padding: calc(var(--base-padding) * 3);
+  background-color: oklch(100% 0 150);
+  box-shadow: 0 0 20px -3px oklch(30% 0.1 150 / 0.25);
+  border-radius: calc(var(--base-br) * 0.2);
+}
+
+.todo-form {
+  display: flex;
+  gap: calc(var(--base-gap) * 2);
+  align-items: center;
+
+  input {
+    font-size: inherit;
+    font-family: inherit;
+    padding: var(--base-padding);
+  }
+
+  button {
+    font-family: inherit;
+    font-size: calc(var(--base-fs) * 1.1);
+    padding: calc(var(--base-padding) * 0.75) calc(var(--base-padding) * 3);
+  }
+}
+
+// Todos Container
+.todos-container {
+  background-color: oklch(100% 0 150);
+  box-shadow: 0 0 20px -3px oklch(30% 0.1 150 / 0.25);
+  padding: var(--base-padding);
+  display: grid;
+  gap: calc(var(--base-gap) * 0.5);
+
+  .todo-card {
+    background-color: oklch(90% 0.05 150);
+    display: flex;
+    gap: var(--base-gap);
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--base-padding) calc(var(--base-padding) * 1.5);
+    inline-size: 90vw;
+
+    button {
+      font-family: inherit;
+      font-size: calc(var(--base-fs) * 1.1);
+      padding: calc(var(--base-padding) * 0.5) calc(var(--base-padding) * 2);
+    }
+
+    @media screen and (width > 480px) {
+      inline-size: min(80vw, 520px);
+    }
+  }
+}
